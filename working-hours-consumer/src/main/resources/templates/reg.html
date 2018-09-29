@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/reg.css" rel="stylesheet"/>
+</head>
+<body>
+<body>
+<div class="container">
+    <div class="form row">
+        <div class="form-horizontal col-md-offset-4" id="login_form">
+            <h3 class="form-title">SIGN UP</h3>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <i>Email</i>
+                    <input class="form-control required" type="text" id="email"
+                           name="email" autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <i>Code</i>
+                    <div class="form-inline">
+                        <input class="form-control" type="text" id="code"
+                               name="password "/>
+                        <button class="btn btn-default" type="submit" id="getCode" style="float: right"
+                                disabled="disabled">
+                            <#if expire ??>
+                            <div id="remainSec" expire="${expire}">${expire}秒后可重新获取</div>
+                            <#else>
+                            获取验证码
+                        </#if>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <i>Password</i>
+                    <input class="form-control required" type="password" id="password"
+                           name="password" maxlength="8"/>
+                </div>
+
+                <div class="form-group col-md-offset-9">
+                    <button type="submit" class="btn btn-success pull-right" id="reg" name="submit"
+                            disabled="disabled">注册
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var expire = $("#remainSec").attr("expire");
+        var text = $("#remainSec").val();
+        var waitTime = 150;
+        var timeLeft = waitTime;
+        var btn = $("#getCode");
+        var email = $("#email");
+        if (typeof(text) != 'undefined') {
+            timeLeft = expire;
+            timeCount();
+        }
+
+        $(email).keyup(function () {
+            if ($(email).val() != null && $(email).val() != "") {
+                $(btn).removeAttr("disabled");
+            } else {
+                $(btn).attr("disabled", true);
+            }
+        })
+
+
+        function timeCount() {
+            timeLeft -= 1
+            if (timeLeft > 0) {
+                $(btn).text(timeLeft + "秒后可重新获取");
+                setTimeout(timeCount, 1000);
+            } else {
+                $(btn).text("重新发送");
+                timeLeft = waitTime;
+                btn.removeAttr("disabled");
+            }
+        }
+
+        $(btn).on("click", function () {
+            $(this).attr("disabled", true);
+            var emailAddr = $(email).val();
+            $.ajax({
+                type: "post",
+                url: "/view/sendcode/",
+                data: {"email": emailAddr},
+                success: function () {
+                }
+            });
+            timeCount(this);
+        });
+
+        $("#email").keyup(function () {
+            if ($(this).val().length != 0 && $("#code").val().length != 0 && $("#password").val().length != 0) {
+                $("#reg").removeAttr("disabled");
+                $(this).removeClass("border textcolor");
+            } else {
+                $("#reg").attr("disabled", true);
+            }
+        });
+
+        $("#code").keyup(function () {
+            if ($(this).val().length != 0 && $("#email").val().length != 0 && $("#password").val().length != 0) {
+                $("#reg").removeAttr("disabled");
+                $(this).removeClass("border");
+            } else {
+                $("#reg").attr("disabled", true);
+            }
+        });
+
+        $("#password").keyup(function () {
+            if ($(this).val().length != 0 && $("#code").val().length != 0 && $("#email").val().length != 0) {
+                $("#reg").removeAttr("disabled");
+            } else {
+                $("#reg").attr("disabled", true);
+            }
+        });
+
+        $("#reg").on("click", function () {
+            var email = $("#email").val();
+            var code = $("#code").val();
+            var password = $("#password").val();
+            $.ajax({
+                type: "post",
+                url: "/view/doreg",
+                data: {"email": email, "code": code, "password": password},
+                success: function (data) {
+                    switch (data) {
+                        //验证码错误
+                        case 0:
+                            $("#code").addClass("border");
+                            $("#code").val("验证码错误");
+                            break;
+                        //验证码正确
+                        case 1:
+                            window.location.href="/view/login";
+                            break;
+                        //验证码失效
+                        case -1:
+                            $("#code").addClass("border");
+                            $("#code").val("验证码已失效");
+                            break;
+                        //邮箱已注册
+                        case -2:
+                            $("#email").addClass("border textcolor");
+                            $("#email").val(email+"  已注册" );
+                            break;
+                        default:
+
+                    }
+                }
+            });
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <bean id="infoService" class="com.jd.provider.service.export.InfoService"/>
+
+    <dubbo:application name="working-hours-provider"/>
+    <dubbo:registry address="${provider.dubbo.registry.address}"/>
+    <dubbo:service interface="com.jd.api.service.IInfoService" ref="infoService"/>
+
+</beans>

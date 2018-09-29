@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jd.provider.mapper.InfoMapper">
+
+    <resultMap id="infoModelMap" type="com.jd.api.model.InfoModel">
+        <id column="id" property="id"/>
+        <result column="requirement" property="requirement"/>
+        <result column="parent" property="parent"/>
+        <result column="priority" property="priority"/>
+        <result column="dock_prod" property="dockProd"/>
+        <result column="dock_r_d" property="dockR_D"/>
+        <result column="working_hours" property="workingHours"/>
+        <result column="start" property="start"/>
+        <result column="end" property="end"/>
+        <result column="comment" property="comment"/>
+    </resultMap>
+
+    <select id="findInfoById" resultMap="infoModelMap">
+      select * from info where id = #{id};
+    </select>
+
+    <select id="getInfosByName" resultMap="infoModelMap">
+        select * from info where dock_prod like '%${name}%' or dock_r_d like '%${name}%';
+    </select>
+</mapper>

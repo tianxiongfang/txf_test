@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- fonts -->
+    <!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>-->
+    <link href="css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
+    <!-- /fonts -->
+    <!-- css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/typo.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/trend.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/info.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <!--  <link href="css/index.css" rel="stylesheet">-->
+    <script src="js/modernizr.js"></script>
+   <!-- <link href="css/base.css" rel="stylesheet">-->
+    <!--<link href="/css/reg.css" rel="stylesheet"/>-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- js for banner section -->
+    <!-- js for banner section -->
+    <script src="js/bliss-slider.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">XF_BLOG</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><h1>XF_BLOG</h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">首页</a></li>
+                <li class="active"><li><a href="about.html">关于</a></li>
+                <li><a href="service.html">服务</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="typo.html">图片</a></li>
+                <li><a href="contact.html">文章</a></li>
+                <li class="active"><li><a href="home.html">历史</a></li>
+                <li><a href="knowledge.html">知识点</a></li>
+                <li><a href="moodlist.html">闲言碎语</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div id="slider" class="slider-container2">
+    <ul class="slider">
+        <li class="slide">
+            <div class="slide-bg">
+                <img src="images/banner1.jpg" alt="An Image" draggable="false">
+            </div>
+        </li>
+        <li class="slide">
+            <div class="slide-bg">
+                <img src="images/banner2.jpg" alt="An Image" draggable="false">
+            </div>
+        </li>
+        <li class="slide">
+            <div class="slide-bg">
+                <img src="images/banner3.jpg" alt="An Image" draggable="false">
+            </div>
+        </li>
+    </ul>
+    <div class="slider-controls">
+        <div class="slide-nav">
+            <a href="#" class="prev"><img src="images/prev.png" alt="w3layouts"></a>
+            <a href="#" class="next"><img src="images/next.png" alt="w3layouts"></a>
+        </div>
+        <ul class="slide-list">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+        </ul>
+    </div>
+</div>
+<div>
+    <div class="form row text-center" style="margin-top: 30px">
+        <div class="form-horizontal col-md-offset-2 col-md-8" id="login_form">
+            <form class="form-inline">
+                <label>${user}</label>
+
+                <input type="text" class="form-control" placeholder="姓名" id="name">
+                <button type="button" class="btn btn-default" id="searchBtn" disabled="disabled">查询
+                </button>
+
+                <input type="text" class="form-control" placeholder="id" id="id">
+                <button type="button" class="btn btn-default" id="searchId" disabled="disabled">查询
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="collapse row" style="margin-top: 20px" id="mostTable" style="height: 500px">
+        <div class="well col-md-offset-1 col-md-5">
+            <table class="table table-hover" id="mostVisitTable">
+                <thead>
+                <td colspan="3" class="text-center">最多查询</td>
+                </thead>
+                <tr class="text-center">
+                    <td>#</td>
+                    <td>用户</td>
+                    <td>查询次数</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="collapse well  col-md-5" style="height: 500px" id="latestTable">
+            <table class="table table-hover" id="latestVisitTable">
+                <thead>
+                <td colspan="3" class="text-center">最近查询</td>
+                </thead>
+                <tr class="text-center">
+                    <td>#</td>
+                    <td>用户</td>
+                    <td>查询时间</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="collapse col-md-offset-2 col-md-8" id="collapseTable" style="margin-top: 20px">
+        <div class="well">
+            <div><a class="glyphicon glyphicon-remove" style="float: right;text-decoration:none;cursor: pointer"
+                    id="close"></a></div>
+            <table class="table table-hover" id="infoTable">
+                <thead class="text-center">
+                <td>id</td>
+                <td>requirement</td>
+                <td>parent</td>
+                <td>priority</td>
+                <td>dock_prod</td>
+                <td>dock_r_d</td>
+                <td>working_hours</td>
+                <td>start</td>
+                <td>end</td>
+                <td>comment</td>
+                <td>from</td>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Design by DanceSmile More Templates <a href="http://localhost:8084/index.html" target="_blank" title="XF_BLOG">XF博客</a> - Collect from <a href="http://localhost:8084/index.html" title="XF博客" target="_blank">XF博客</a> <a href="/">XF博客</a></p>
+</footer>
+<script>
+    $(document).ready(function () {
+        $("#mostTable").collapse();
+        $("#latestTable").collapse();
+
+        $("#close").click(function () {
+            $("#collapseTable").collapse('hide');
+            $("#mostTable").collapse('show');
+            $("#latestTable").collapse('show');
+        });
+
+        $("#searchBtn").click(function () {
+            $("#mostTable").collapse('hide');
+            $("#latestTable").collapse('hide');
+            $("#infoTable .infotr").remove();
+            var name = $("#name").val();
+            $.ajax({
+                type: "get",
+                url: "/info/name/" + name,
+                success: function (data) {
+                    var tr;
+                    for (var info in data) {
+                        tr = "<tr class='text-center infotr'>";
+                        for (item in data[info]) {
+                            tr = tr.concat("<td>");
+                            if (data[info][item] == null || data[info][item] == 0) {
+                                tr = tr.concat("-");
+                            } else {
+                                tr = tr.concat(data[info][item]);
+                            }
+                            tr = tr.concat("</td>");
+                        }
+                        tr = tr.concat("</tr>")
+                        $("#infoTable").append(tr);
+                    }
+
+                }
+            });
+
+            $("#collapseTable").collapse('show');
+        });
+
+        $("#searchId").click(function () {
+            $("#mostTable").collapse('hide');
+            $("#latestTable").collapse('hide');
+            $("#infoTable .infotr").remove();
+            var id = $("#id").val();
+            $.ajax({
+                type: "get",
+                url: "/info/id/" + id,
+                success: function (data) {
+                    var tr = "<tr class='text-center infotr'>";
+                    for (item in data) {
+                        tr = tr.concat("<td>");
+                        if (data[item] == null || data[item] == 0) {
+                            tr = tr.concat("-");
+                        } else {
+                            tr = tr.concat(data[item]);
+                        }
+                        tr = tr.concat("</td>");
+                    }
+                    tr = tr.concat("</td>");
+                    $("#infoTable").append(tr);
+                }
+            });
+            $("#collapseTable").collapse('show');
+        });
+
+
+        $("#name").focus(function () {
+            $("#collapseTable").collapse('hide');
+            // $("#mostTable").collapse('show');
+            // $("#latestTable").collapse('show');
+        });
+
+        $("#name").keyup(function () {
+            if ($(this).val().length != 0) {
+                $("#searchBtn").removeAttr("disabled");
+            } else {
+                $("#searchBtn").attr("disabled", true);
+            }
+        });
+
+        $("#id").focus(function () {
+            $("#collapseTable").collapse('hide');
+            // $("#mostTable").collapse('show');
+            // $("#latestTable").collapse('show');
+        });
+
+        $("#id").keyup(function () {
+            if ($(this).val().length != 0) {
+                $("#searchId").removeAttr("disabled");
+            } else {
+                $("#searchId").attr("disabled", true);
+            }
+        });
+
+        var websocket = null;
+
+        if ('WebSocket' in window) {
+            websocket = new WebSocket("ws://localhost:8084/websocket");
+        }
+
+        websocket.onerror = function () {
+
+        }
+
+        websocket.onopen = function () {
+            websocket.send("ping");
+        }
+
+        websocket.onmessage = function (event) {
+            var msg = $.parseJSON(event.data);
+            if (msg.type == 'latest') {
+                $("#latestVisitTable .latesttr").remove();
+                var data = msg.data;
+                for (item in data) {
+                    var str = String(data[item]);
+                    data[item] = str.split('#');
+                    var tr = "<tr class='latesttr text-center'><td>";
+                    tr = tr.concat(parseInt(item) + 1).concat("</td><td>").concat(data[item][0]).concat("</td><td>").concat(data[item][1]).concat("</td></tr>");
+                    $("#latestVisitTable").append(tr);
+                }
+            } else {
+                var data = msg.data;
+                $("#mostVisitTable .mosttr").remove();
+                for (item in data) {
+                    var tr = "<tr class='mosttr text-center'><td>";
+                    tr = tr.concat(parseInt(item) + 1).concat("</td><td>").concat(data[item]['value']).concat("</td><td>").concat(data[item]['score']).concat("</td></tr>");
+                    $("#mostVisitTable").append(tr);
+                }
+            }
+
+
+        }
+
+        websocket.onclose = function () {
+
+        }
+
+        window.onbeforeunload = function (ev) {
+            websocket.close();
+        };
+
+        function formatDate(now) {
+            var year = now.getYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            return "20" + year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        }
+
+    });
+
+            $(function() {
+                $("#slider").blissSlider({
+                    auto: 1,
+                    transitionTime: 500,
+                    timeBetweenSlides: 4000
+                });
+            });
+</script>
+</body>
+</html>
