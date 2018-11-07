@@ -1,0 +1,2 @@
+# txf_test
+tt本人研究的小demo，总体采用dubbo分布式，用Redis做缓存，采用aop进行日志添加，其中登陆采用activeMq进行消息推送发至邮箱进行登录验证，前端采用freemaker模板
