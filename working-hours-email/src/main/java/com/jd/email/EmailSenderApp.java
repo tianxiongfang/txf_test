@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
 
+//aa
 @SpringBootApplication
 public class EmailSenderApp {
 
