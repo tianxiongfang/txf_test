@@ -212,7 +212,7 @@ a.readmore { background: #ffa60b; color: #fff; padding: 5px 10px; float: right; 
 .news h3.links span { color: #F17B6B; }
 .news ul { margin-bottom: 20px }
 .news ul li a:hover { text-decoration: underline }
-.rank li {     margin-top: 2px;height: 25px; line-height: 25px; clear: both; padding-left: 20px; overflow: hidden; padding-left: 15px; background: url(../images/li.jpg) no-repeat left center; }
+.rank li {     margin-top: -2px;height: 14px; line-height: 14px; clear: both; padding-left: 20px; overflow: hidden; padding-left: 15px; background: url(../images/li.jpg) no-repeat left center; }
 .rank { margin: 10px 0 }
 .rank li a { color: #333; }
 .paih { background: url(../images/ph.jpg) no-repeat left 8px; margin: 10px 0 }
